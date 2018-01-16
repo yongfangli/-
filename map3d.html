@@ -1,0 +1,31 @@
+<!DOCTYPE html "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml">  
+    <head>  
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />  
+        <title>GeoGlobe JS API</title>  
+        <script src="js/OpenLayers/OpenLayers-min.js" type="text/javascript"></script>  
+        <script src="js/GeoGlobeJS.min.js" type="text/javascript"></script>  
+        <script type="text/javascript">  
+          //地图初始化  
+          function initialize() {  
+            /**************** 参数定义开始 *****************/  
+            //定义配置对象  
+            var Cfg = {};  
+            //定位的中心点  
+            Cfg.lonLat = "112.939,31.377";  
+            //定位的缩放级别  
+            Cfg.zoom = "4";  
+            /**************** 参数定义结束 *****************/  
+            //构造地图对象实例,并添加到id为simpleMap的div容器中。参数选项中layerGroupLoaded设置为true，表示实例化一个地图对象时，默认会加载一组底图图层。  
+            var map = new Geo.View3D.Map("simpleMap", {layerGroupLoaded: true});  
+            //设置罗盘的屏幕显示位置,参数为"left"，表示罗盘显示居左；"right"，表示罗盘显示居右  
+            map.setCompassPosition("left");  
+            //定位到中心点和缩放级别  
+            map.setCenter(new Geo.LonLat(Cfg.lonLat.split(",")[0],Cfg.lonLat.split(",")[1]), Cfg.zoom);  
+          }  
+        </script>  
+    </head>  
+    <body onload="initialize()">  
+        <div id="simpleMap" style="width: 500px; height: 300px"></div>  
+    </body>  
+</html>  
